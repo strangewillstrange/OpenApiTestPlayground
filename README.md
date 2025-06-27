@@ -11,7 +11,7 @@ Hoping to use Python.....
 
 ### Order Inquiry:
   -  GET `/order/details`
-      - Expect: Limited order variables.
+      - Expect: json payload with limited order variables.
       - Response: Complete order details.
 
 ### Order Data:
