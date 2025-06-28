@@ -35,3 +35,13 @@ Current resources:
 - https://upptime.js.org/
 - https://k6.io/
 - https://www.karatelabs.io/
+
+
+https://www.apicur.io/studio/getting-started/:
+docker pull quay.io/apicurio/apicurio-studio:1.0.0.Beta1
+docker pull quay.io/apicurio/apicurio-studio-ui:1.0.0.Beta1
+
+docker run -it -p 8080:8080 quay.io/apicurio/apicurio-studio:1.0.0.Beta1
+docker run -it -p 8888:8080 quay.io/apicurio/apicurio-studio-ui:1.0.0.Beta1
+
+uvicorn main:app --reload

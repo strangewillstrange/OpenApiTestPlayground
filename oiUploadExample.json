@@ -1,0 +1,41 @@
+{
+    "order": "12345",
+    "bin": "123456",
+    "last4": "7890",
+    "expDate": "1224",
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Email": "john.doe@email.com",
+    "Phone": "555-1234",
+    "OrderDate": "2023-10-01T12:00:00Z",
+    "TotalAmount": 69.97,
+    "ARN": "12345678901234567890123",
+    "Address": [{
+        "BillingAddress1": "123 Test St",
+        "BillingAddress2": "Apt 4B",
+        "BillingCity": "Testville",
+        "B": "CA",
+        "BillingZipCode": "12345"
+    },
+    {
+        "ShippingAddress1": "456 Example Rd",
+        "ShippingAddress2": "",
+        "ShippingCity": "Sampletown",
+        "S": "CA",
+        "ShippingZipCode": "67890"
+    }],
+    "Items": [
+        {
+            "ItemID": "A1",
+            "Description": "Widget A",
+            "Quantity": 2,
+            "Price": 19.99
+        },
+        {
+            "ItemID": "B2",
+            "Description": "Widget B",
+            "Quantity": 1,
+            "Price": 29.99
+        }
+    ]
+}

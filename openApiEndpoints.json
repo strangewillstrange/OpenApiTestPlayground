@@ -1,0 +1,277 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "restOrderPlayground",
+    "version": "1.0.0",
+    "description": "restOrderPlayground"
+  },
+  "paths": {
+    "/order/query": {
+      "summary": "Path used to manage the list of orderqueries.",
+      "description": "The REST endpoint/path used to list and create zero or more `orderQuery` entities. This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.",
+      "post": {
+        "requestBody": {
+          "description": "A new `orderQuery` to be created.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/orderQuery"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/orderDetails"
+                }
+              }
+            },
+            "description": "Successful response."
+          }
+        },
+        "summary": "Create an orderQuery",
+        "description": "Creates a new instance of an `orderQuery`."
+      }
+    },
+    "/order/upload": {
+      "summary": "Path used to manage the list of orderuploads.",
+      "description": "The REST endpoint/path used to list and create zero or more `OrderUpload` entities. This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.",
+      "post": {
+        "requestBody": {
+          "description": "A new `OrderUpload` to be created.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/orderDetails"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response."
+          }
+        },
+        "summary": "Create an OrderUpload",
+        "description": "Creates a new instance of an `OrderUpload`."
+      }
+    },
+    "/order/upload/{orderId}": {
+      "summary": "Path used to manage a single OrderUpload.",
+      "description": "The REST endpoint/path used to get, update, and delete single instances of an `OrderUpload`. This path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks, respectively.",
+      "get": {
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/orderDetails"
+                }
+              }
+            },
+            "description": "Successful response - returns a single `OrderUpload`."
+          },
+          "404": {
+            "description": "Order not found."
+          }
+        },
+        "operationId": "getOrderUpload",
+        "summary": "Get an OrderUpload",
+        "description": "Gets the details of a single instance of an `OrderUpload`."
+      },
+      "put": {
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated `OrderUpload` information.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/orderDetails"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful response."
+          }
+        },
+        "operationId": "updateOrderUpload",
+        "summary": "Update an OrderUpload",
+        "description": "Updates an existing `OrderUpload`."
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response."
+          }
+        },
+        "summary": "Delete an OrderUpload",
+        "description": "Deletes an existing `OrderUpload`."
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "orderDetails": {
+        "title": "Root Type for orderDetails",
+        "description": "Complete order details for purchase",
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "string"
+          },
+          "bin": {
+            "type": "string"
+          },
+          "last4": {
+            "type": "string"
+          },
+          "expDate": {
+            "type": "string"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string"
+          },
+          "Phone": {
+            "type": "string"
+          },
+          "OrderDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TotalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "ARN": {
+            "type": "string"
+          },
+          "BillingAddress": {
+            "type": "object",
+            "properties": {
+              "BillingAddress1": {
+                "type": "string"
+              },
+              "BillingAddress2": {
+                "type": "string"
+              },
+              "BillingCity": {
+                "type": "string"
+              },
+              "BillingState": {
+                "type": "string"
+              },
+              "BillingZipCode": {
+                "type": "string"
+              }
+            }
+          },
+          "ShippingAddress": {
+            "type": "object",
+            "properties": {
+              "ShippingAddress1": {
+                "type": "string"
+              },
+              "ShippingAddress2": {
+                "type": "string"
+              },
+              "ShippingCity": {
+                "type": "string"
+              },
+              "ShippingState": {
+                "type": "string"
+              },
+              "ShippingZipCode": {
+                "type": "string"
+              }
+            }
+          },
+          "Items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ItemID": {
+                  "type": "string"
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "Quantity": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "Price": {
+                  "type": "number",
+                  "format": "double"
+                }
+              }
+            }
+          }
+        }
+      },
+      "orderQuery": {
+        "title": "Root Type for orderQuery",
+        "description": "Order details to query for complete order details.",
+        "type": "object",
+        "properties": {
+          "bin": {
+            "type": "string"
+          },
+          "last4": {
+            "type": "string"
+          },
+          "expDate": {
+            "type": "string"
+          },
+          "TotalAmount": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      }
+    }
+  }
+}
